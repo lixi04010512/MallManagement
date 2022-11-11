@@ -11,8 +11,8 @@ import com.jide.security.service.SysUserService;
 import com.jide.security.service.dto.PermissionDto;
 import com.jide.security.service.dto.SysUserDto;
 import com.jide.security.service.dto.SysUserQueryDto;
-import com.jide.tools.domain.UploadFile;
-import com.jide.tools.service.UploadFileTool;
+//import com.jide.tools.domain.UploadFile;
+//import com.jide.tools.service.UploadFileTool;
 import com.jide.utils.SpringContextHolder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class SysUserServiceImpl implements SysUserService {
 
     private final SysUserMapper sysUserMapper;
     private final SysUserRoleMapper sysUserRoleMapper;
-    private final UploadFileTool uploadFileTool;
+//    private final UploadFileTool uploadFileTool;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

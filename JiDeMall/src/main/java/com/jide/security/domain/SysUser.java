@@ -36,10 +36,8 @@ public class SysUser implements Serializable {
     @JsonIgnore
     private String password;
 
-
     @Email
     private String email;
-
 
     @TableLogic
     private Boolean enabled;
