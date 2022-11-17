@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.xxx.store.service.UserServiceTests
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.031 s <<< FAILURE! - in com.xxx.store.service.UserServiceTests
+changeInfo  Time elapsed: 0 s  <<< ERROR!
+com.xxx.store.service.exception.UserNotFoundException: 用户不存在！
+	at com.xxx.store.service.UserServiceTests.changeInfo(UserServiceTests.java:45)
+
+getByUid  Time elapsed: 0 s  <<< ERROR!
+com.xxx.store.service.exception.UserNotFoundException: 用户不存在！
+	at com.xxx.store.service.UserServiceTests.getByUid(UserServiceTests.java:36)
+
+updatePassword  Time elapsed: 0 s  <<< ERROR!
+com.xxx.store.service.exception.UserNotFoundException: 用户不存在！
+	at com.xxx.store.service.UserServiceTests.updatePassword(UserServiceTests.java:32)
+
