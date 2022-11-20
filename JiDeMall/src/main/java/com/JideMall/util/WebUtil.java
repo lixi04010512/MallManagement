@@ -1,8 +1,6 @@
-package com.JideMall.util;
+package com.jidemall.util;
 
 import org.springframework.util.DigestUtils;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * md5加密工具类

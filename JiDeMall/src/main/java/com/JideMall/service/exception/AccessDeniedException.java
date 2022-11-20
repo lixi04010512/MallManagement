@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 /** 非法访问的异常 */
 public class AccessDeniedException extends ServiceException {

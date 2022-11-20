@@ -1,6 +1,6 @@
-package com.JideMall.config;
+package com.jidemall.config;
 
-import com.JideMall.interceptor.LoginInterceptor;
+import com.jidemall.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

@@ -1,4 +1,4 @@
-package com.JideMall.entity;
+package com.jidemall.entity;
 
 import lombok.*;
 

@@ -1,6 +1,6 @@
-package com.JideMall.service;
+package com.jidemall.service;
 
-import com.JideMall.entity.User;
+import com.jidemall.entity.User;
 
 public interface UserService {
     /**

@@ -1,12 +1,14 @@
-package com.JideMall.mapper;
+package com.jidemall.mapper;
 
-import com.JideMall.entity.User;
+import com.jidemall.entity.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 
 /**
  * 用户模块持久层接口
  */
+@Repository
 public interface UserMapper {
     /**
      * 插入用户数据

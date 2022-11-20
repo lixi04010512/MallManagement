@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jidemall.mapper.CategoryMapper">
+    <resultMap id="CategoryEntityMap" type="com.jidemall.entity.Category">
+        <!-- 将表的资源和类的属性不一致的字段进行匹配指定，名称一致的字段可以省略不写-->
+        <id column="category_id" property="categoryId"></id>
+        <result column="category_name" property="categoryName"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <select id="findIdByName" resultMap="CategoryEntityMap">
+        SELECT category_id FROM tb_category WHERE category_name = #{categoryName};
+    </select>
+</mapper>

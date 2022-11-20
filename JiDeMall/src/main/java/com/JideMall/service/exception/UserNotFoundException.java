@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 /** 用户数据不存在的异常 */
 public class UserNotFoundException extends ServiceException {

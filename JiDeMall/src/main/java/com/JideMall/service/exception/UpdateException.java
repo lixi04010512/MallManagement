@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 /** 更新数据的异常 */
 public class UpdateException extends ServiceException {

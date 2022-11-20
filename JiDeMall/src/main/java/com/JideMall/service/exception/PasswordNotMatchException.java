@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 public class PasswordNotMatchException extends ServiceException{
     public PasswordNotMatchException() {

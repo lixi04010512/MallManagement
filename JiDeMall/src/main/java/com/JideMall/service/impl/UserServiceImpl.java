@@ -1,11 +1,10 @@
-package com.JideMall.service.impl;
+package com.jidemall.service.impl;
 
-import com.JideMall.entity.User;
-import com.JideMall.mapper.UserMapper;
-import com.JideMall.service.UserService;
-import com.JideMall.service.exception.*;
-import com.JideMall.util.WebUtil;
-import com.JideMall.service.exception.*;
+import com.jidemall.entity.User;
+import com.jidemall.mapper.UserMapper;
+import com.jidemall.service.UserService;
+import com.jidemall.service.exception.*;
+import com.jidemall.util.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 /**
  * 数据插入过程中的异常

@@ -1,4 +1,4 @@
-package com.JideMall.entity;
+package com.jidemall.entity;
 
 import lombok.*;
 
@@ -12,8 +12,10 @@ import java.util.Date;
 @EqualsAndHashCode
 public class BaseEntity {
     private String createdUser;
-    private Date createdTime;
-    private String modifiedUser;
-    private Date modifiedTime;
 
+    private Date createdTime;
+
+    private String modifiedUser;
+
+    private Date modifiedTime;
 }

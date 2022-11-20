@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.xxx.store.service.OrderServiceTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.013 s <<< FAILURE! - in com.xxx.store.service.OrderServiceTests
-createOrder  Time elapsed: 0.001 s  <<< ERROR!
-com.xxx.store.service.exception.AddressNotFoundException: 收货地址不存在
-	at com.xxx.store.service.OrderServiceTests.createOrder(OrderServiceTests.java:17)
-

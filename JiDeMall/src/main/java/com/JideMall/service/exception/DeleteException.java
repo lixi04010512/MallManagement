@@ -1,4 +1,4 @@
-package com.JideMall.service.exception;
+package com.jidemall.service.exception;
 
 /** 删除数据失败的异常 */
 public class DeleteException extends ServiceException {

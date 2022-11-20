@@ -1,14 +1,15 @@
-package com.JideMall;
+package com.jidemall;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-@MapperScan("com.JideMall.mapper")
+
 @SpringBootApplication
-public class JideMallApplication {
+@MapperScan("com.jidemall.mapper")
+public class JiDeMallApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JideMallApplication.class, args);
+        SpringApplication.run(JiDeMallApplication.class, args);
     }
 
 }

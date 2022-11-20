@@ -1,9 +1,6 @@
-package com.JideMall.util;
+package com.jidemall.util;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -30,3 +27,4 @@ public class JsonResult<E> implements Serializable {
         this.data=data;
     }
 }
+
