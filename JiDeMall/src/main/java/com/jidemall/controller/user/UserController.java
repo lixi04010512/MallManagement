@@ -15,6 +15,18 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
+    @RequestMapping("send")
+    public JsonResult<Void> send(String email){
+        userService.sendEmail(email);
+        return new JsonResult<>(OK);
+    }
+
+    @RequestMapping("test_email_code")
+    public JsonResult<Void> test_code(String code){
+        userService.test_code(code);
+        return  new JsonResult<>(OK);
+    }
+
     @RequestMapping("regist")
     public JsonResult<Void> regist(User user){
         userService.regist(user);

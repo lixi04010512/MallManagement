@@ -47,4 +47,8 @@ public interface UserService {
      * @param username 用户名
      */
     void changeAvatar(Integer uid,String avatar,String username);
+
+    void sendEmail(String email);
+
+    boolean test_code(String code);
 }
