@@ -5,28 +5,40 @@ import com.jidemall.service.UserService;
 import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
+    @RequestMapping("register_html")
+    public String register_html(){
+        return "register";
+    }
+
+    @RequestMapping("login_html")
+    public String login_html(){
+        return "login";
+    }
+    @ResponseBody
     @RequestMapping("send")
     public JsonResult<Void> send(String email){
         userService.sendEmail(email);
         return new JsonResult<>(OK);
     }
-
+    @ResponseBody
     @RequestMapping("test_email_code")
     public JsonResult<Void> test_code(String code){
         userService.test_code(code);
         return  new JsonResult<>(OK);
     }
-
+    @ResponseBody
     @RequestMapping("regist")
     public JsonResult<Void> regist(User user){
         userService.regist(user);

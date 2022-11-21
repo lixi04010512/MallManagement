@@ -22,10 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         StringBuffer requestURL = request.getRequestURL();
         log.info("拦截的路径是url={}",requestURL);
         Object uid = request.getSession().getAttribute("uid");
-        if (uid==null){
-            response.sendRedirect("/web/login.html");
-            return false;
-        }
+//        if (uid==null){
+//            response.sendRedirect("/web/login.html");
+//            return false;
+//        }
         return true;
 
     }
