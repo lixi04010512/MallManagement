@@ -21,9 +21,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findProductById(Long productId) {
-        List<Product> products = productMapper.findProductById(productId);
-        return products;
+    public Product findProductById(Long productId) {
+        Product product = productMapper.findProductById(productId);
+        return product;
     }
 
     @Override

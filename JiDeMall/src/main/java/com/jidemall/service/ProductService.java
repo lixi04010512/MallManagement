@@ -12,7 +12,7 @@ public interface ProductService{
     List<Product> findProductList();
 
     //根据id查询商品
-    List<Product> findProductById(Long productId);
+    Product findProductById(Long productId);
 
     //根据商品名称查找商品
     List<Product> findProductByName(String productName);
