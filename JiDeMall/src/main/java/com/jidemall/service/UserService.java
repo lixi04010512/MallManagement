@@ -43,9 +43,6 @@ public interface UserService {
     void changeInfo(Integer uid,String username,User user);
 
 
-//    void logout(HttpServletRequest request);
-    void changeAvatar(Integer uid,String avatar,String username);
-
     void sendEmail(String email);
 
     boolean test_code(String code);
