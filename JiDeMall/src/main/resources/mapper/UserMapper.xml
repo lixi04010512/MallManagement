@@ -35,4 +35,10 @@
     <update id="updateAvatarByUid">
         update tb_user set avatar=#{avatar},modified_user=#{modifiedUser},modified_time=#{modifiedTime} where uid=#{uid}
     </update>
+    <update id="addBalance">
+        update tb_user set balance=balance+#{money} where uid=#{uid}
+    </update>
+    <update id="subtractBalance">
+        update tb_user set balance=balance-#{price} where uid=#{uid}
+    </update>
 </mapper>

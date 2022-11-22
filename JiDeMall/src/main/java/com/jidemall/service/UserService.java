@@ -3,6 +3,7 @@ package com.jidemall.service;
 import com.jidemall.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 
 public interface UserService {
     /**
@@ -48,5 +49,7 @@ public interface UserService {
     void sendEmail(String email);
 
     boolean test_code(String code);
+
+    void recharge(Integer uid, BigDecimal money);
 
 }
