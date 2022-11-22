@@ -5,10 +5,14 @@ import com.jidemall.mapper.UserMapper;
 import com.jidemall.service.UserService;
 import com.jidemall.service.exception.*;
 import com.jidemall.util.WebUtil;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -118,5 +122,49 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
+    @Autowired
+    JavaMailSender jms;
+    @Value("${spring.mail.username}")
+    private String sender;
+    //定义验证码
+    private Integer userVerificationCode = null;
+
+    public void sendEmail(String email) {
+
+        Integer userVerificationCode = new Random().nextInt(999999);
+
+        //建立邮件消息
+        SimpleMailMessage mainMessage = new SimpleMailMessage();
+
+        //发送者
+        mainMessage.setFrom(sender);
+
+        //接收者
+        mainMessage.setTo(email);
+
+        //发送的标题
+        mainMessage.setSubject("邮箱验证");
+
+        //发送的内容
+        String msg = "您正在使用邮箱验证，验证码：" + userVerificationCode + "。";
+        mainMessage.setText(msg);
+
+        //发送邮件
+        jms.send(mainMessage);
+
+        //下面是加入缓存，以便于进行邮箱验证
+        this.userVerificationCode = userVerificationCode;
+
+    }
+
+    public boolean test_code(String code) {
+        int n = 0;
+        n = Integer.parseInt(code);
+        if (n == userVerificationCode) {
+            return true;
+        }
+        return false;
+    }
 
 }

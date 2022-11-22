@@ -42,9 +42,12 @@ public interface UserService {
      */
     void changeInfo(Integer uid,String username,User user);
 
-    /**
-     * 退出登录
-     * @param request Http请求
-     */
+
 //    void logout(HttpServletRequest request);
+    void changeAvatar(Integer uid,String avatar,String username);
+
+    void sendEmail(String email);
+
+    boolean test_code(String code);
+
 }

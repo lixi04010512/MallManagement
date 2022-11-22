@@ -1,0 +1,226 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ela Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 图片上传预览 -->
+    <link href="/stylesheets/upload.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" href="/images/QRAUqs9.png">
+    <link rel="shortcut icon" href="/images/QRAUqs9.png">
+
+    <link rel="stylesheet" href="/stylesheets/normalize.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome.css">
+    <link rel="stylesheet" href="/stylesheets/themify-icons.css">
+    <link rel="stylesheet" href="/stylesheets/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="/stylesheets/flag-icon.min.css">
+    <link rel="stylesheet" href="/stylesheets/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/stylesheets/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+    <link rel="stylesheet" href="/stylesheets/backstage.css">
+    <link href='/stylesheets/css.css' rel='stylesheet' type='text/css'>
+    <script src="/javascripts/jq.js"></script>
+</head>
+
+<body>
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-item-has-children active dropdown" style="width: 280px;">
+                        <a href="table.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>商品管理</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div id="right-panel" class="right-panel">
+
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand">JIDE</a>
+                    <a class="navbar-brand hidden"><img src="/images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <form>
+                <h4 style="    margin-bottom: 22px;
+                margin-top: -17px;">添加商品</h4>
+                   <div class="form-group">
+                    <div id="uploadImgs" style="margin-bottom: 20px;">
+                        <label for="fileUpIpt" id="labelId">
+                            <div class="uploadImgs-add">+</div>
+                        </label>
+                        <div class="type-file-div">
+                            <input type="file" class="input-file" name="luTest[]" style="display: none;">
+                        </div>
+                    </div>
+                   
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">名称</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入名称" style="width:70% ;">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">类别</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入类别"style="width:70% ;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">详情</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入详情"style="width:70% ;">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">价格</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入价格"style="width:70% ;">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">库存</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入库存"style="width:70% ;">
+                  </div>
+                
+                
+                <a href="#" class="btn btn-default btn-lg active" role="button" style="background-color: #6e6e6e;
+                border: none;
+                color: white;
+                padding: 10px 30px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;">提交</a>
+              </form>
+            <!-- <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">商品列表</strong>
+                                <button id="add">添加商品</button>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>图片</th>
+                                            <th>名称</th>
+                                            <th>类别</th>
+                                            <th>详情</th>
+                                            <th>价格</th>
+                                            <th>销量</th>
+                                            <th>库存</th>
+                                            <th>上架时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td class="img"><img src='' ></td>
+                                                <td>
+                                                    无印良品 MUJI 基础润肤化妆水
+                                                </td>
+                                                <td>
+                                                    化妆品
+                                                </td>
+                                                <td>
+                                                    500ml
+                                                </td>
+                                                <td>
+                                                    78.00
+                                                </td>
+                                                <td>
+                                                    120
+                                                </td>
+                                                <td>
+                                                    800
+                                                </td>
+                                                <td>
+                                                    2019-09-18 13:18:47
+                                                </td>
+                                                <td>
+                                                    <button class="cha">编辑</button>
+                                                    <button class="del">删除</button>
+                                                </td>
+                                            </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <script src="/javascripts/jq.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery.matchHeight.min.js"></script>
+    <script src="/javascripts/main1.js"></script>
+    <script src="/javascripts/datatables.min.js"></script>
+    <script src="/javascripts/dataTables.bootstrap.min.js"></script>
+    <script src="/javascripts/dataTables.buttons.min.js"></script>
+    <script src="/javascripts/buttons.bootstrap.min.js"></script>
+    <script src="/javascripts/jszip.min.js"></script>
+    <script src="/javascripts/vfs_fonts.js"></script>
+    <script src="/javascripts/buttons.html5.min.js"></script>
+    <script src="/javascripts/buttons.print.min.js"></script>
+    <script src="/javascripts/buttons.colVis.min.js"></script>
+    <script src="/javascripts/datatables-init.js"></script>
+    <script src="/javascripts/product.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bootstrap-data-table-export').DataTable();
+        });
+    </script>
+
+
+<!-- 图片预览上传 -->
+<script>
+    var gbOption = null; //必须，固定变量名
+    var filesArr=[]; //固定写法 这个就是上传能拿到的 files的集合，
+    var fileClass = 'input-file'; //必须，固定变量名，值可自定义，就是input的 class自定义后 需要在这重新声明
+    var imgObj2 = []; //可自定义，图片上传功能 时必须给的东西，传递到imgsUpload
+    var upoad; //可自定义，上传功能时的  工具人，自定义然后传递到imgsUpload 就行
+    var imgMaxNum=3;  //最多上传3张
+    var ispre; ////反显  时的工具人属性，是一个对象，里面包含了 当前图片预览步骤，和图片数组。 这个最好固定，你要改就一起要改upload.js里面的
+
+    setTimeout(function () { //setTimeout变成异步加载，不然提示有些函数找不到，可自己优化
+        imgsUpload(imgObj2,upoad,imgMaxNum); //上传时调用
+
+        var imgObj = ['./t1.png', './t2.png', './t3.png'] //反显, 模拟反显的数据来源，真实是从服务器获取数据
+        gbOption=ispre = new imgPre(imgObj, true); //反显
+
+        createPreDiv(); //创建用于图片预览的DIV结构，上传和返显都要调用
+    }, 100)
+
+
+
+
+</script>
+<script src="/javascripts/upload.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>

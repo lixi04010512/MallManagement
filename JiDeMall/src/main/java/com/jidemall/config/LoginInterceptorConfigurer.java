@@ -22,11 +22,19 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/css/**");
         patterns.add("/js/**");
         patterns.add("/images/**");
-        patterns.add("/web/login.html");
-        patterns.add("/web/register.html");
-        patterns.add("/web/index.html");
+        patterns.add("/assets/**");
+        patterns.add("/img/**");
+        patterns.add("/javascripts/**");
+        patterns.add("/stylesheets/**");
+        patterns.add("/templates/login.html");
+        patterns.add("/templates/register.html");
+        patterns.add("/templates/index.html");
         patterns.add("/users/regist");
         patterns.add("/users/login");
+        patterns.add("/users/send");
+        patterns.add("/users/test_email_code");
+        patterns.add("/users/register_html");
+        patterns.add("/users/login_html");
 
         //完成拦截器注册
         registry.addInterceptor(interceptor).addPathPatterns("/**").excludePathPatterns(patterns);
