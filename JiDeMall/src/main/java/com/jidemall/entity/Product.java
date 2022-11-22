@@ -44,4 +44,7 @@ public class Product {
 
     //修改时间
     private Date updateTime;
+
+    //总销量
+    private BigDecimal sumPrice;
 }

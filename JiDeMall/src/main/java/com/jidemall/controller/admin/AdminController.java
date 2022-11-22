@@ -27,4 +27,5 @@ public class AdminController extends BaseController {
         System.out.println("用户id："+getUidFromSession(session)+"密码："+getUsernameFromSession(session));
         return new JsonResult<Admin>(OK,login);
     }
+
 }

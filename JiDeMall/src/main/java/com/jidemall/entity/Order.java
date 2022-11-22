@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -42,4 +43,7 @@ public class Order {
 
     //修改时间
     private Date updateTime;
+
+    //订单总价
+    private BigDecimal totalPrice;
 }

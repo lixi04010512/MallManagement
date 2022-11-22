@@ -2,12 +2,15 @@ package com.jidemall.controller.admin;
 
 import com.jidemall.entity.Product;
 import com.jidemall.service.ProductService;
+import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/admin/products")
 public class AdminProductController {
 
@@ -15,15 +18,19 @@ public class AdminProductController {
     private ProductService productService;
 
     @GetMapping("/findProductList")
-    public String findProductList(){
+    public ModelAndView findProductList(ModelAndView mv){
         List<Product> products = productService.findProductList();
-        return "success";
+        mv.addObject("products",products);
+        mv.setViewName("table");
+        return mv;
     }
 
     @GetMapping("/findProductById/{id}")
-    public String findProductById(@PathVariable Long id){
-        List<Product> products = productService.findProductById(id);
-        return "success";
+    public ModelAndView findProductById(@PathVariable Long id,ModelAndView mv){
+        Product product = productService.findProductById(id);
+        mv.addObject("product",product);
+        mv.setViewName("product-view");
+        return mv;
     }
 
     @GetMapping("/findProductByName/{name}")
@@ -44,10 +51,11 @@ public class AdminProductController {
         return "success";
     }
 
+
+    @ResponseBody
     @DeleteMapping("/deleteProduct/{id}")
-    public String findProductByPriceDesc(@PathVariable Long id){
-        Integer count = productService.deleteProduct(id);
-        return "success";
+    public void deleteProduct(@PathVariable Long id){
+        productService.deleteProduct(id);
     }
 
     @PostMapping("/insertProduct")
@@ -60,5 +68,10 @@ public class AdminProductController {
     public String updateProduct(Product product){
         Integer count = productService.updateProduct(product);
         return "success";
+    }
+
+    @GetMapping("/table_html")
+    public String table_html(){
+        return "table";
     }
 }
