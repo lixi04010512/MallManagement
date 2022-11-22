@@ -3,6 +3,7 @@ package com.jidemall.entity;
 import lombok.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 用户的实体类
@@ -22,5 +23,6 @@ public class User extends BaseEntity implements Serializable {
     private Integer gender;
     private String avatar;
     private Integer isDelete;
+    private BigDecimal balance;
 
 }

@@ -59,6 +59,7 @@
             <div class="form-group">
               <label >密码</label>
               <input type="password" class="form-control" placeholder="请输入密码" id="password">
+
             </div>
             
             <button type="button" id="login" class="btn btn-primary">登录</button>
@@ -97,6 +98,25 @@
                         window.location="/users/table_html";
                 }
             })
+        })
+    </script>
+
+    <script>
+        //鼠标移开密码框开始验证
+        $("#username").blur(function () {
+            var password = $("#username").val();
+            console.log(password)
+            var Password=/^(\w){6,20}$/;
+            if (!Password.test(password)) {
+                $("#p_password").html("<font color=\"red\" size=\"2\">密码格式填写错误！</font>");
+            } else {
+                $("#p_password").html("<font color=\"green\" size=\"2\">密码格式正确！</font>");
+            }
+        })
+
+        //鼠标放置密码框不验证
+        $("#username").focus(function(){
+            $("#p_password").html("");
         })
     </script>
 
