@@ -37,4 +37,6 @@ public interface ProductMapper {
 
     //按商品销量降序排列
     List<Product> salesCountDesc();
+
+    List<Product> queryToday();
 }

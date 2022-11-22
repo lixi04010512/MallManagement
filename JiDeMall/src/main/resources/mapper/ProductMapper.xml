@@ -52,4 +52,8 @@
     <select id="salesCountDesc" resultMap="ProductEntityMap">
         select * from tb_product order by sales_count desc;
     </select>
+
+    <select id="queryToday" resultMap="ProductEntityMap">
+        select t2.*,SUM(t1.total_price) sumPrice from tb_order t1 left JOIN tb_product t2 on t1.product_id = t2.product_id where DATEDIFF(t1.create_time,NOW()) = 0  GROUP BY t1.product_id;
+    </select>
 </mapper>

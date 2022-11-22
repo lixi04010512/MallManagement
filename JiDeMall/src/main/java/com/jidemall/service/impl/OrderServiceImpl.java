@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService {
             throw new UserNotFoundException("用户不存在！");
         }
 
-        List<Product> products = productMapper.findProductById(order.getProductId());
-        Product product = products.get(0);
+        Product product = productMapper.findProductById(order.getProductId());
+//        Product product = products.get(0);
         if (result.getBalance().compareTo(product.getPrice().multiply(BigDecimal.valueOf(order.getAmount()))) == -1){
             throw new ServiceException("用户余额不足！");
         }
@@ -59,5 +59,12 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> order_query(Integer uid) {
         List<Order> result = orderMapper.queryOrder(uid);
         return result;
+    }
+
+
+    @Override
+    public List<Product> order_query_today() {
+        List<Product> products = productMapper.queryToday();
+        return products;
     }
 }
