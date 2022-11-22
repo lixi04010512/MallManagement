@@ -44,7 +44,6 @@ public interface UserService {
 
 
 //    void logout(HttpServletRequest request);
-    void changeAvatar(Integer uid,String avatar,String username);
 
     void sendEmail(String email);
 
