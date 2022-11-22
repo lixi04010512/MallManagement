@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -121,9 +122,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
-
-
     @Autowired
     JavaMailSender jms;
     @Value("${spring.mail.username}")
@@ -166,6 +164,18 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void recharge(Integer uid, BigDecimal money) {
+        User result = userMapper.findByUid(uid);
+        if (result==null||result.getIsDelete()==1){
+            throw new  UserNotFoundException("用户不存在！");
+        }
+        Integer row = userMapper.addBalance(uid,money);
+        if (row!=1){
+            throw new UpdateException("更新产生异常！");
+        }
     }
 
 }

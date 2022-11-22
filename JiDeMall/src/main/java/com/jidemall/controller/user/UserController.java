@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("/users")
@@ -153,6 +154,13 @@ public class UserController extends BaseController{
         userService.changeInfo(getUidFromSession(session),getUsernameFromSession(session),user);
         return new JsonResult<>(OK);
     }
+
+    @RequestMapping("recharge")
+    public JsonResult<Void> recharge(BigDecimal money, HttpSession session){
+        userService.recharge(getUidFromSession(session),money);
+        return new JsonResult<>(OK);
+    }
+
 
 //    @DeleteMapping(value = "/logout")
 //    public ResponseEntity<Object> logout(HttpServletRequest request) {
