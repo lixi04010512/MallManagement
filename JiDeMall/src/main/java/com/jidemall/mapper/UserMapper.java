@@ -3,6 +3,7 @@ package com.jidemall.mapper;
 import com.jidemall.entity.User;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -54,6 +55,9 @@ public interface UserMapper {
      * @return
      */
     Integer updateAvatarByUid(Integer uid,String avatar,String modifiedUser,Date modifiedTime);
+
+    Integer addBalance(Integer uid, BigDecimal money);
+    Integer subtractBalance(Integer uid, BigDecimal price);
 
 
 }

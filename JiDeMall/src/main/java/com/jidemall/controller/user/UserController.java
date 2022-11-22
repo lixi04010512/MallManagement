@@ -4,12 +4,17 @@ import com.jidemall.entity.User;
 import com.jidemall.service.UserService;
 import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("/users")
@@ -149,4 +154,17 @@ public class UserController extends BaseController{
         userService.changeInfo(getUidFromSession(session),getUsernameFromSession(session),user);
         return new JsonResult<>(OK);
     }
+
+    @RequestMapping("recharge")
+    public JsonResult<Void> recharge(BigDecimal money, HttpSession session){
+        userService.recharge(getUidFromSession(session),money);
+        return new JsonResult<>(OK);
+    }
+
+
+//    @DeleteMapping(value = "/logout")
+//    public ResponseEntity<Object> logout(HttpServletRequest request) {
+//        userService.logout(request);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }

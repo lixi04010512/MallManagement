@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<!DOCTYPE html>
 <html lang="en">
 
@@ -729,6 +730,7 @@
                                 <div class="single_billing_inp">
                                     <label>用户名 <span>*</span></label>
                                     <input type="text" id="username" placeholder="请输入用户名">
+                                    <p id="p_name"></p>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -736,6 +738,9 @@
                                     <label>邮箱 <span>*</span></label>
                                     <input style="width: 75%;display: inline-table;" type="email" id="email_number"
                                            placeholder="请输入邮箱">
+
+                                           <p id="p_email"></p>
+
                                     <button type="button" id="send_email" class="default_btn w-50 text_xs px-1"
                                             style="width: 25%!important;">发送
                                     </button>
@@ -746,27 +751,31 @@
                                 <div class="single_billing_inp">
                                     <label>验证码<span>*</span></label>
                                     <input type="text" id="email_code" placeholder="请输入验证码">
+                                    <p id="p_random"></p>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label>密码 <span>*</span></label>
                                     <input type="password" id="password" placeholder="请输入密码">
+                                    <p id="p_password"></p>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label>确认密码 <span>*</span></label>
                                     <input type="password" id="confirm_password" placeholder="请输入确认密码">
+                                    <p id="p_password1"></p>
                                 </div>
                             </div>
                             <div class="col-12 mt-2">
                                 <div class="custom_check check_2 d-flex align-items-center">
-                                    <input type="checkbox" class="check_inp" hidden id="save-default">
-                                    <label for="save-default">已阅读并同意以下协议 <a href="terms-condition.html"
-                                                                                      class="text-color">几得平台服务协议</a>
-                                    </label>
+                                    <input type="checkbox"   class="check_inp"  id="check">
+                                    <span>已阅读并同意以下协议 <a href="terms-condition.html" class="text-color">几得平台服务协议</a>
+                                    </span>
+
                                 </div>
+                                <p id="confirmCheck"></p>
                             </div>
                             <div class="col-12 mt-3">
                                 <button type="button" id="register"
@@ -829,6 +838,8 @@
         })
     })
 </script>
-</body>
 
+<!-- 注册格式js -->
+<script src="/assets/js/register.js"></script>
+</body>
 </html>

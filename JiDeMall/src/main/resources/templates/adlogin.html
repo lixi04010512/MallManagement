@@ -26,32 +26,6 @@
 </head>
 
 <body>
-
-    <!-- <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="menu-item-has-children active dropdown">
-                        <a href="table.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>商品管理</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="/tables2">订单列表</a></li>
-                            <li><i class="fa fa-table"></i><a href="/tables">商品列表</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>管理员</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="adlogin.html">登录</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </aside> -->
-
     <div id="right-panel" class="right-panel">
 
         <header id="header" class="header">
@@ -78,13 +52,14 @@
         margin-bottom: 23px;
         border-bottom: 2px solid #a0a0a0;">管理员登录</h5>
             <div class="form-group">
-              <label for="exampleInputEmail1">用户名</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入用户名">
+              <label for="username">用户名</label>
+              <input type="text" class="form-control" id="username"  placeholder="请输入用户名">
             
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1" >密码</label>
               <input type="password" class="form-control" placeholder="请输入密码" id="exampleInputPassword1">
+                <p id="p_password"></p>
             </div>
             
             <button type="submit" class="btn btn-primary">登录</button>
@@ -113,6 +88,25 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
+    </script>
+
+    <script>
+        //鼠标移开密码框开始验证
+        $("#username").blur(function () {
+            var password = $("#username").val();
+            console.log(password)
+            var Password=/^(\w){6,20}$/;
+            if (!Password.test(password)) {
+                $("#p_password").html("<font color=\"red\" size=\"2\">密码格式填写错误！</font>");
+            } else {
+                $("#p_password").html("<font color=\"green\" size=\"2\">密码格式正确！</font>");
+            }
+        })
+
+        //鼠标放置密码框不验证
+        $("#username").focus(function(){
+            $("#p_password").html("");
+        })
     </script>
 
 
