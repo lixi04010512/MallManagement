@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
+import java.util.List;
+
 import static com.jidemall.controller.user.BaseController.OK;
 
 @RestController
@@ -24,4 +26,9 @@ public class UserOrderController {
         return new JsonResult<>(OK);
     }
 
+    @RequestMapping("query")
+    public JsonResult<List<Order>> order_query(HttpSession session){
+        List<Order> res = orderService.order_query((Integer)session.getAttribute("uid"));
+        return new JsonResult<List<Order>>(OK,res);
+    }
 }

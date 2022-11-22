@@ -54,4 +54,10 @@ public class OrderServiceImpl implements OrderService {
         // 扣除用户余额
         userMapper.subtractBalance(result.getUid(), product.getPrice().multiply(BigDecimal.valueOf(order.getAmount())));
     }
+
+    @Override
+    public List<Order> order_query(Integer uid) {
+        List<Order> result = orderMapper.queryOrder(uid);
+        return result;
+    }
 }

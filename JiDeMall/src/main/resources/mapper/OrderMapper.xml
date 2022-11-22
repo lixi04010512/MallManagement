@@ -19,4 +19,8 @@
             (#{userId},#{address},#{productId},#{amount},#{createTime},#{phone},#{receiver});
     </insert>
 
+    <select id="queryOrder" resultMap="OrderEntityMap">
+        select * from tb_order where user_id = #{uid}
+    </select>
+
 </mapper>
