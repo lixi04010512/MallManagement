@@ -121,67 +121,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bootstrap-data-table-export').DataTable();
-    });
-
-    $.ajax({
-        type: "POST",
-        url: "",
-        success: function (data) {
-            $("#products").empty();
-            for (var i of data.data) {
-                $("#products").append(`
-                    <tr>
-                                                <td class="img"><img src='{i.productImg}' ></td>
-                                                <td>
-                                                    {i.productName}
-                                                </td>
-                                                <td>
-                                                    {i.product}
-                                                </td>
-                                                <td>
-                                                    500ml
-                                                </td>
-                                                <td>
-                                                    78.00
-                                                </td>
-                                                <td>
-                                                    120
-                                                </td>
-                                                <td>
-                                                    800
-                                                </td>
-                                                <td>
-                                                    2019-09-18 13:18:47
-                                                </td>
-                                                <td>
-                                                    <a href="/users/alter.html" style="background-color: #6e6e6e;
-                                                    border: none;
-                                                    color: white;
-                                                    padding: 2px 6px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    display: inline-block;
-                                                    font-size: 16px;
-                                                    margin-left: 7px;" class="cha">编辑</a>
-                                                    <a style="background-color: #6e6e6e;
-                                                    border: none;
-                                                    color: white;
-                                                    padding: 2px 6px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    display: inline-block;
-                                                    font-size: 16px;
-                                                    margin-left: 7px;    margin-top: 8px;" class="del">删除</a>
-                                                </td>
-                                            </tr>
-                    `)
-            }
-        }
     })
-
 </script>
-
-
 </body>
-
 </html>
