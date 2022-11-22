@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/assets/css/responsive.css">
 </head>
 
-<body>y
+<body>
     <!-- Preloader -->
     <div class="preloader">
         <img src="/assets/images/preloader.gif" alt="preloader">
@@ -728,18 +728,19 @@
                                 <div class="col-12">
                                     <div class="single_billing_inp">
                                         <label>用户名<span>*</span></label>
-                                        <input type="email" placeholder="请输入用户名">
+                                        <input type="text" id="username" placeholder="请输入用户名">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="single_billing_inp">
                                         <label>密码 <span>*</span></label>
-                                        <input type="password" placeholder="请输入密码">
+                                        <input type="password" id="password" placeholder="请输入密码">
+                                        <p id="p_password"></p>
                                     </div>
                                 </div>
 
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="default_btn xs_btn rounded px-4 d-block w-100">登录</button>
+                                    <button type="button" id="login" class="default_btn xs_btn rounded px-4 d-block w-100">登录</button>
                                 </div>
 
                             </div>
@@ -766,8 +767,8 @@
     <script src="/assets/js/app.js"></script>
 <script>
     //鼠标移开密码框开始验证
-    $("#username").blur(function () {
-        var password = $("#username").val();
+    $("#password").blur(function () {
+        var password = $("#password").val();
         console.log(password)
         var Password=/^(\w){6,20}$/;
         if (!Password.test(password)) {
@@ -778,7 +779,7 @@
     })
 
     //鼠标放置密码框不验证
-    $("#username").focus(function(){
+    $("#password").focus(function(){
         $("#p_password").html("");
     })
 

@@ -729,6 +729,7 @@
                                 <div class="single_billing_inp">
                                     <label>用户名 <span>*</span></label>
                                     <input type="text" id="username" placeholder="请输入用户名">
+                                    <p id="p_name"></p>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -739,6 +740,7 @@
                                     <button type="button" id="send_email" class="default_btn w-50 text_xs px-1"
                                             style="width: 25%!important;">发送
                                     </button>
+                                    <p id="p_email"></p>
 
                                 </div>
                             </div>
@@ -746,18 +748,21 @@
                                 <div class="single_billing_inp">
                                     <label>验证码<span>*</span></label>
                                     <input type="text" id="email_code" placeholder="请输入验证码">
+                                    <p id="p_random"></p>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label>密码 <span>*</span></label>
                                     <input type="password" id="password" placeholder="请输入密码">
+                                    <p id="p_password"></p>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label>确认密码 <span>*</span></label>
                                     <input type="password" id="confirm_password" placeholder="请输入确认密码">
+                                    <p id="p_password1"></p>
                                 </div>
                             </div>
                             <div class="col-12 mt-2">
@@ -766,6 +771,7 @@
                                     <label for="save-default">已阅读并同意以下协议 <a href="/users/terms-condition_html"
                                                                                       class="text-color">几得平台服务协议</a>
                                     </label>
+                                    <p id="confirmCheck"></p>
                                 </div>
                             </div>
                             <div class="col-12 mt-3">
@@ -806,30 +812,9 @@
     })
 
     $("#register").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "/users/test_email_code",
-            data: {"email_code": $("#email_code").val()},
-            success: function () {
 
-            }
-        })
-
-        $.ajax({
-            type: "POST",
-            url: "/users/regist",
-            data: {
-                "username": $("#username").val(),
-                "password": $("#password").val(),
-                "email": $("#email_number").val()
-            },
-            success: function () {
-                window.location = "/users/login_html";
-            }
-        })
     })
 </script>
-</body>
 <!-- 注册格式js -->
 <script src="/assets/js/register.js"></script>
 </body>

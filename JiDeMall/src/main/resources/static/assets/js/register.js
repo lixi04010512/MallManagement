@@ -23,25 +23,6 @@ $("#email_number").blur(function(){
         $("#p_email").html("<font color=\"green\" size=\"2\">邮箱格式正确！</font>");
     }
 })
-//鼠标放置邮箱框不验证
-$("#email_number").focus(function(){
-    $("#p_email").html("");
-})
-
-//鼠标移开验证码框开始验证
-$("#email_code").blur(function () {
-    var email_code = $("#email_code").val();
-    if (number!=email_code) {
-        $("#p_random").html("<font color=\"red\" size=\"2\">验证码输入错误！</font>");
-    } else {
-        $("#p_random").html("<font color=\"green\" size=\"2\">验证码输入正确！</font>");
-    }
-})
-
-//鼠标放置验证码框不验证
-$("#email_code").focus(function(){
-    $("#p_random").html("");
-})
 
 //鼠标移开密码框开始验证
 $("#password").blur(function () {
@@ -76,8 +57,8 @@ $("#confirm_password").focus(function(){
 })
 
 //鼠标移开同意协议框开始验证
-$("#check").blur(function () {
-    var check = $("#check").prop('checked');
+$("#save-default").blur(function () {
+    var check = $("#save-default").prop('checked');
     if (check) {
         $("#confirmCheck").html("<font color=\"green\" size=\"2\">已同意协议</font>");
     } else {
@@ -86,7 +67,7 @@ $("#check").blur(function () {
 })
 
 //鼠标放置同意协议框不验证
-$("#check").focus(function(){
+$("#save-default").focus(function(){
     $("#confirmCheck").html("");
 })
 
@@ -96,18 +77,15 @@ $("#register").click(function(){
     var Username = /^[a-zA-Z\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
     var email_number = $("#email_number").val();
     var Useremail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
-    var use_random = $("#use_random").val();
     var password = $("#password").val();
     var Password=/^(\w){6,20}$/;
     var password1 = $("#password").val();
     var password2 = $("#confirm_password").val();
-    var check = $("#check").prop('checked');
+    var check = $("#save-default").prop('checked');
     if(!Username.test(username)){
         alert("姓名输入格式错误！")
     }else if(!Useremail.test(email_number)){
         alert("邮箱输入格式错误!")
-    }else if(number!=use_random){
-        alert("验证码输入错误！")
     }else if(!Password.test(password)){
         alert("密码输入格式错误！")
     }else if(password1!=password2){
@@ -116,49 +94,25 @@ $("#register").click(function(){
         alert("未同意协议！")
     }else{
         $.ajax({
-            type:"POST",
-            url:"/registerPost",
-            data:{"username":$("#username").val(),"email_number":$("#email_number").val(),"password":$("#password").val()},
-            success:function(data){
-                console.log(data)
-                alert("用户注册成功!");
-                window.location="/login";
+            type: "POST",
+            url: "/users/test_email_code",
+            data: {"email_code": $("#email_code").val()},
+            success: function () {
+
+            }
+        })
+
+        $.ajax({
+            type: "POST",
+            url: "/users/regist",
+            data: {
+                "username": $("#username").val(),
+                "password": $("#password").val(),
+                "email": $("#email_number").val()
+            },
+            success: function () {
+                window.location = "/users/login_html";
             }
         })
     }
-})
-let number=null;
-//邮箱发送按钮
-function setTime(time) {
-    if (!isNaN(time) && time > 0) {
-        $('#send_email').html("倒计时" + time + "秒");
-        $('#send_email').attr('disabled', true);
-        var b = setInterval(function () {
-            time--;
-            if (time <= 0) {
-                $('#send_email').html('重新发送');
-                $('#send_email').attr('disabled', false);
-                clearInterval(b);
-            } else {
-                $('#send_email').html("倒计时" + time + "秒");
-            }
-        }, 1000);
-    } else {
-        alert('时间有误')
-    }
-}
-
-$("#send_email").click(function(){
-    setTime(60);
-    $.ajax({
-        type:"POST",
-        url:"/sendEmailPost",
-        data:{"email_number":$("#email_number").val()},
-        success:function (data) {
-            number=data.data;
-            console.log(number)
-            alert("发送成功！");
-
-        }
-    })
 })
