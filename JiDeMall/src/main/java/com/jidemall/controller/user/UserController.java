@@ -4,9 +4,6 @@ import com.jidemall.entity.User;
 import com.jidemall.service.UserService;
 import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,7 +79,7 @@ public class UserController extends BaseController{
         return "index";
     }
 
-    @RequestMapping("order-completed_html")
+    @RequestMapping("order-compl eted_html")
     public String ordercompleted_html(){
         return "order-completed";
     }
@@ -128,6 +125,7 @@ public class UserController extends BaseController{
         userService.regist(user);
         return new JsonResult<>(OK);
     }
+    @ResponseBody
     @RequestMapping("login")
     public JsonResult<User> login(String username, String password, HttpSession session){
         User login = userService.login(username, password);
@@ -137,6 +135,7 @@ public class UserController extends BaseController{
         System.out.println("用户id："+getUidFromSession(session)+"密码："+getUsernameFromSession(session));
         return new JsonResult<User>(OK,login);
     }
+    @ResponseBody
     @RequestMapping("change_password")
     public JsonResult<Void> changePassword(String oldPassword,String newPassword,HttpSession session){
         Integer uid=getUidFromSession(session);
@@ -144,11 +143,13 @@ public class UserController extends BaseController{
         userService.changePassword(uid,username,oldPassword,newPassword);
         return new JsonResult<Void>(OK);
     }
+    @ResponseBody
     @RequestMapping("getInfo")
     public JsonResult<User> getInfo(HttpSession session){
         User user = userService.getByUid(getUidFromSession(session));
         return new JsonResult<>(OK, user);
     }
+    @ResponseBody
     @RequestMapping("changeInfo")
     public JsonResult<Void> changeInfo(HttpSession session,User user){
         userService.changeInfo(getUidFromSession(session),getUsernameFromSession(session),user);
@@ -162,9 +163,5 @@ public class UserController extends BaseController{
     }
 
 
-//    @DeleteMapping(value = "/logout")
-//    public ResponseEntity<Object> logout(HttpServletRequest request) {
-//        userService.logout(request);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+
 }

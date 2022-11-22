@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void regist(User user) {
         User result = userMapper.findByUsername(user.getUsername());
-        if (result!=null){
+        if (result != null) {
             throw new UsernameDuplicatedException("用户名已存在！");
         }
 
@@ -45,23 +46,24 @@ public class UserServiceImpl implements UserService {
         user.setCreatedTime(date);
         user.setModifiedTime(date);
         Integer rows = userMapper.insert(user);
-        if (rows!=1){
+        if (rows != 1) {
             throw new InsertException("产生了未知的异常");
         }
     }
 
+
     @Override
     public User login(String username, String password) {
         User result = userMapper.findByUsername(username);
-        if (result==null){
+        if (result == null) {
             throw new UsernameDuplicatedException("用户不存在！");
         }
-        String salt=result.getSalt();
+        String salt = result.getSalt();
         String md5Password = WebUtil.getMD5Password(password, salt);
-        if (!md5Password.equals(result.getPassword())){
+        if (!md5Password.equals(result.getPassword())) {
             throw new PasswordNotMatchException("用户密码错误！");
         }
-        if (result.getIsDelete()==1){
+        if (result.getIsDelete() == 1) {
             throw new UserNotFoundException("用户不存在！");
         }
         User user = new User();
@@ -74,19 +76,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changePassword(Integer uid, String username, String oldPassword, String newPassword) {
         User result = userMapper.findByUid(uid);
-        if (result==null||result.getIsDelete()==1){
-            throw new  UserNotFoundException("用户不存在！");
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UserNotFoundException("用户不存在！");
         }
         String md5Password = WebUtil.getMD5Password(oldPassword, result.getSalt());
-        if (!md5Password.equals(result.getPassword())){
+        if (!md5Password.equals(result.getPassword())) {
             throw new PasswordNotMatchException("原密码不正确");
         }
-        if (oldPassword.equals(newPassword)){
+        if (oldPassword.equals(newPassword)) {
             throw new PasswordNotMatchException("修改的密码不可与原密码相同");
         }
         String password = WebUtil.getMD5Password(newPassword, result.getSalt());
         Integer row = userMapper.updatePasswordByUid(uid, password, username, new Date());
-        if (row!=1){
+        if (row != 1) {
             throw new UpdateException("更新数据产生异常");
         }
     }
@@ -95,8 +97,8 @@ public class UserServiceImpl implements UserService {
     public User getByUid(Integer uid) {
         User result = userMapper.findByUid(uid);
 //        System.out.println(result);
-        if (result==null||result.getIsDelete()==1){
-            throw new  UserNotFoundException("用户不存在！");
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UserNotFoundException("用户不存在！");
         }
         User user = new User();
         user.setUsername(result.getUsername());
@@ -109,15 +111,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changeInfo(Integer uid, String username, User user) {
         User result = userMapper.findByUid(uid);
-        if (result==null||result.getIsDelete()==1){
-            throw new  UserNotFoundException("用户不存在！");
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UserNotFoundException("用户不存在！");
         }
         user.setUid(uid);
 //        user.setUsername(username);
         user.setModifiedUser(username);
         user.setModifiedTime(new Date());
         Integer integer = userMapper.updateInfoByUid(user);
-        if (integer!=1){
+        if (integer != 1) {
             throw new UpdateException("更新产生异常！");
         }
     }
