@@ -23,7 +23,7 @@
         update  tb_user set password=#{password},modified_user=#{modifiedUser},modified_time=#{modifiedTime} where uid=#{uid}
     </update>
     <select id="findByUid" resultMap="UserEntityMap">
-        select uid,username,password,salt,phone,email,gender,avatar,is_delete,created_user,created_time,modified_user,modified_time from tb_user where uid=#{uid}
+        select uid,username,password,salt,phone,email,gender,avatar,is_delete,created_user,created_time,modified_user,modified_time,balance from tb_user where uid=#{uid}
     </select>
     <update id="updateInfoByUid">
         update tb_user set
