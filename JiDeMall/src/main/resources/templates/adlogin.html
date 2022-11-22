@@ -52,16 +52,16 @@
         margin-bottom: 23px;
         border-bottom: 2px solid #a0a0a0;">管理员登录</h5>
             <div class="form-group">
-              <label for="exampleInputEmail1">用户名</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入用户名">
+              <label>用户名</label>
+              <input type="text" class="form-control" id="adminname" aria-describedby="emailHelp" placeholder="请输入用户名">
             
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1" >密码</label>
-              <input type="password" class="form-control" placeholder="请输入密码" id="exampleInputPassword1">
+              <label >密码</label>
+              <input type="password" class="form-control" placeholder="请输入密码" id="password">
             </div>
             
-            <button type="submit" class="btn btn-primary">登录</button>
+            <button type="button" id="login" class="btn btn-primary">登录</button>
           </form>
     </div>
     <script src="/javascripts/jq.js"></script>
@@ -87,6 +87,17 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
+
+        $("#login").click(function (){
+            $.ajax({
+                type:"POST",
+                url:"/admin/login",
+                data:{"username":$("#adminname").val(),"password":$("#password").val()},
+                success:function (){
+                        window.location="/users/table_html";
+                }
+            })
+        })
     </script>
 
 

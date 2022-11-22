@@ -795,99 +795,9 @@
                     <a href="#">更多<span><i class="las la-angle-right"></i></span></a>
                 </div>
             </div>
-            <div class="row gy-4">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_new_arrive">
-                        <div class="sna_img">
-                            <img loading="lazy" class="prd_img" src="/assets/images/laptop-3.png" alt="product">
+            <div class="row gy-4" id="four_product">
 
 
-                        </div>
-                        <div class="sna_content">
-                            <a href="/users/product-view.html">
-                                <h4>HP Pavilion 15</h4>
-                            </a>
-                            <div class="ratprice">
-                                <div class="price">
-                                    <span class="org_price">$45.00</span>
-                                </div>
-
-                            </div>
-                            <div class="product_adcart">
-                                <a class="default_btn" href="/users/product-view.html">详情</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_new_arrive">
-                        <div class="sna_img">
-                            <img loading="lazy" class="prd_img" src="/assets/images/hd-monitor.png" alt="product">
-
-                        </div>
-                        <div class="sna_content">
-                            <a href="/users/product-view.html">
-                                <h4>SAMSUNG 27" Class Curved</h4>
-                            </a>
-                            <div class="ratprice">
-                                <div class="price">
-                                    <span class="org_price">$45.00</span>
-
-                                </div>
-
-                            </div>
-                            <div class="product_adcart">
-                                <a  class="default_btn" href="/users/product-view.html">详情</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_new_arrive">
-                        <div class="sna_img">
-                            <img loading="lazy" class="prd_img" src="/assets/images/headphone-3.png" alt="product">
-
-                        </div>
-                        <div class="sna_content">
-                            <a href="/users/product-view.html">
-                                <h4>COWIN E7 Active</h4>
-                            </a>
-                            <div class="ratprice">
-                                <div class="price">
-                                    <span class="org_price">$45.00</span>
-
-                                </div>
-
-                            </div>
-                            <div class="product_adcart">
-                                <a class="default_btn" href="/users/product-view.html">详情</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_new_arrive">
-                        <div class="sna_img">
-                            <img loading="lazy" class="prd_img" src="/assets/images/phone-1.png" alt="product">
-
-                        </div>
-                        <div class="sna_content">
-                            <a href="/users/product-view.html">
-                                <h4>Xiaomi Note 7 Pro</h4>
-                            </a>
-                            <div class="ratprice">
-                                <div class="price">
-                                    <span class="org_price">$45.00</span>
-
-                                </div>
-
-                            </div>
-                            <div class="product_adcart">
-                                <a class="default_btn" href="/users/checkout.html">立即购买</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1087,6 +997,41 @@
     <script src="/assets/js/slick.min.js"></script>
     <script src="/assets/js/jquery.nice-select.min.js"></script>
     <script src="/assets/js/app.js"></script>
+<script>
+    $.ajax({
+        type:"GET",
+        url:"/user/products/findProductList",
+        success:function (data){
+            console.log(data);
+            $("#four_product").empty();
+            for (var i of data){
+                $("#four_product").append(`
+                 <div class="col-lg-3 col-sm-6">
+                    <div class="single_new_arrive">
+                        <div class="sna_img">
+                            <img loading="lazy" class="prd_img" src="${i.productImg}" alt="product">
+                        </div>
+                        <div class="sna_content">
+                            <a href="/users/product-view_html">
+                                <h4>${i.productName}</h4>
+                            </a>
+                            <div class="ratprice">
+                                <div class="price">
+                                    <span class="org_price">${i.price}</span>
+                                </div>
+
+                            </div>
+                            <div class="product_adcart">
+                                <a class="default_btn" href="/users/product-view_html">${i.details}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `)
+            }
+        }
+    })
+</script>
 </body>
 
 
