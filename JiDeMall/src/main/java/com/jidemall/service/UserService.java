@@ -2,6 +2,9 @@ package com.jidemall.service;
 
 import com.jidemall.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+
 public interface UserService {
     /**
      * 用户注册
@@ -40,15 +43,10 @@ public interface UserService {
      */
     void changeInfo(Integer uid,String username,User user);
 
-    /**
-     * 修改用户的头像
-     * @param uid 用户的id
-     * @param avatar 用户头像
-     * @param username 用户名
-     */
-    void changeAvatar(Integer uid,String avatar,String username);
-
     void sendEmail(String email);
 
     boolean test_code(String code);
+
+    void recharge(Integer uid, BigDecimal money);
+
 }

@@ -12,7 +12,7 @@ public interface ProductMapper {
     List<Product> findProductList();
 
     //根据id查询商品
-    List<Product> findProductById(Long productId);
+    Product findProductById(Long productId);
 
     //根据商品名称查找商品
     List<Product> findProductByName(String productName);
@@ -37,4 +37,6 @@ public interface ProductMapper {
 
     //按商品销量降序排列
     List<Product> salesCountDesc();
+
+    List<Product> queryToday();
 }

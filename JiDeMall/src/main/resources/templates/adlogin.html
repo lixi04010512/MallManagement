@@ -52,16 +52,17 @@
         margin-bottom: 23px;
         border-bottom: 2px solid #a0a0a0;">管理员登录</h5>
             <div class="form-group">
-              <label for="exampleInputEmail1">用户名</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入用户名">
+              <label>用户名</label>
+              <input type="text" class="form-control" id="adminname" aria-describedby="emailHelp" placeholder="请输入用户名">
             
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1" >密码</label>
-              <input type="password" class="form-control" placeholder="请输入密码" id="exampleInputPassword1">
+              <label >密码</label>
+              <input type="password" class="form-control" placeholder="请输入密码" id="password">
+
             </div>
             
-            <button type="submit" class="btn btn-primary">登录</button>
+            <button type="button" id="login" class="btn btn-primary">登录</button>
           </form>
     </div>
     <script src="/javascripts/jq.js"></script>
@@ -87,6 +88,36 @@
         $(document).ready(function () {
             $('#bootstrap-data-table-export').DataTable();
         });
+
+        $("#login").click(function (){
+            $.ajax({
+                type:"POST",
+                url:"/admin/login",
+                data:{"username":$("#adminname").val(),"password":$("#password").val()},
+                success:function (){
+                        window.location="/users/table_html";
+                }
+            })
+        })
+    </script>
+
+    <script>
+        //鼠标移开密码框开始验证
+        $("#username").blur(function () {
+            var password = $("#username").val();
+            console.log(password)
+            var Password=/^(\w){6,20}$/;
+            if (!Password.test(password)) {
+                $("#p_password").html("<font color=\"red\" size=\"2\">密码格式填写错误！</font>");
+            } else {
+                $("#p_password").html("<font color=\"green\" size=\"2\">密码格式正确！</font>");
+            }
+        })
+
+        //鼠标放置密码框不验证
+        $("#username").focus(function(){
+            $("#p_password").html("");
+        })
     </script>
 
 

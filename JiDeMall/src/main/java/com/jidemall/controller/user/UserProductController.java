@@ -17,9 +17,9 @@ public class UserProductController {
     private ProductService productService;
 
     @GetMapping("/findProductList")
-    public String findProductList(){
+    public List<Product> findProductList(){
         List<Product> products = productService.findProductList();
-        return "success";
+        return products;
     }
 
     @GetMapping("/findProductByName/{name}")
