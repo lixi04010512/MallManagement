@@ -2,6 +2,8 @@ package com.jidemall.service;
 
 import com.jidemall.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface UserService {
     /**
      * 用户注册
@@ -41,10 +43,8 @@ public interface UserService {
     void changeInfo(Integer uid,String username,User user);
 
     /**
-     * 修改用户的头像
-     * @param uid 用户的id
-     * @param avatar 用户头像
-     * @param username 用户名
+     * 退出登录
+     * @param request Http请求
      */
-    void changeAvatar(Integer uid,String avatar,String username);
+//    void logout(HttpServletRequest request);
 }

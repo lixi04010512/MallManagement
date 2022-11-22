@@ -4,9 +4,13 @@ import com.jidemall.entity.User;
 import com.jidemall.service.UserService;
 import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -46,4 +50,10 @@ public class UserController extends BaseController{
         userService.changeInfo(getUidFromSession(session),getUsernameFromSession(session),user);
         return new JsonResult<>(OK);
     }
+
+//    @DeleteMapping(value = "/logout")
+//    public ResponseEntity<Object> logout(HttpServletRequest request) {
+//        userService.logout(request);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }
