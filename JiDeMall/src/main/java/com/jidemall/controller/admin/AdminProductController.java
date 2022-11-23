@@ -104,7 +104,7 @@ public class AdminProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println(product);
         Integer count = productService.insertProduct(product);
         return "redirect:http://localhost:8080/admin/products/findProductList";
 
