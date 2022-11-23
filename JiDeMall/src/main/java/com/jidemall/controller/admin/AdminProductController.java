@@ -103,6 +103,7 @@ public class AdminProductController {
         }
 
         Integer count = productService.insertProduct(product);
+
         return "redirect:http://localhost:8080/admin/products/table_html";
 
     }
