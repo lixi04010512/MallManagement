@@ -57,55 +57,55 @@
                 </div>
             </div>
         </header>
-
+        <form action="/admin/products/insertProduct" method="post" enctype="multipart/form-data">
         <div class="content">
-            <form>
                 <h4 style="    margin-bottom: 22px;
                 margin-top: -17px;">添加商品</h4>
                    <div class="form-group">
                     <div id="uploadImgs" style="margin-bottom: 20px;">
-                        <label for="fileUpIpt" id="labelId">
-                            <div class="uploadImgs-add">+</div>
-                        </label>
+<!--                        <label for="fileUpIpt" id="labelId">-->
+<!--                            <div class="uploadImgs-add">+</div>-->
+<!--                        </label>-->
                         <div class="type-file-div">
-                            <input type="file" class="input-file" name="luTest[]" style="display: none;">
+<!--                            <input type="file" class="input-file" name="TuTest[]" style="display: none;">-->
+                            <input type="file" name="file">
                         </div>
                     </div>
                    
                   </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">名称</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入名称" style="width:70% ;">
+                  <label>名称</label>
+                  <input type="text" class="form-control" id="product_name" name="product_name" placeholder="请输入名称" style="width:70% ;">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">类别</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入类别"style="width:70% ;">
+                  <label>类别</label>
+                  <input type="text" class="form-control" id="product_category" name="product_category" placeholder="请输入类别"style="width:70% ;">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">详情</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入详情"style="width:70% ;">
+                    <label>详情</label>
+                    <input type="text" class="form-control" id="product_details" name="product_details" placeholder="请输入详情"style="width:70% ;">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">价格</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入价格"style="width:70% ;">
+                    <label>价格</label>
+                    <input type="text" class="form-control" id="product_price" name="product_price" placeholder="请输入价格"style="width:70% ;">
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleInputPassword1">库存</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入库存"style="width:70% ;">
+                    <label>库存</label>
+                    <input type="text" class="form-control" id="product_inventory" name="product_inventory" placeholder="请输入库存"style="width:70% ;">
                   </div>
                 
                 
-                <a href="#" class="btn btn-default btn-lg active" role="button" style="background-color: #6e6e6e;
+                <input type="submit" class="btn btn-default btn-lg active" role="button" style="background-color: #6e6e6e;
                 border: none;
                 color: white;
                 padding: 10px 30px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;">提交</a>
-              </form>
+                font-size: 16px;"/>
         </div>
+        </form>
         <div class="clearfix"></div>
     </div>
     <script src="/javascripts/jq.js"></script>
@@ -153,7 +153,17 @@
         createPreDiv(); //创建用于图片预览的DIV结构，上传和返显都要调用
     }, 100)
 
-
+//
+// $("#add_product").click(function (){
+//     $.ajax({
+//         type:"POST",
+//         url:"/admin/products/insertProduct",
+//         data:{"productName":$("#product_name").val(),"details":$("#product_details").val(),"inventory":$("#product_inventory").val(),"price":$("#product_price").val(),""},
+//         success:function (){
+//
+//         }
+//     })
+// })
 
 
 </script>

@@ -957,8 +957,8 @@
                     <div class="account_sidebar">
                         <div class="account_profile position-relative shadow_sm">
                             <div class="acprof_cont">
-                                <p style="display:inline-block">Hello,</p><h4 style="display:inline-block">Russ</h4>
-                                <p>账户余额：</p>
+                                <p style="display:inline-block">Hello,</p><h4 style="display:inline-block" id="username"></h4>
+                                <p>账户余额：</p><h4 style="display:inline-block" id="user_balance"></h4>
                             </div>
                             <div class="profile_hambarg d-lg-none d-block">
                                 <i class="las la-bars"></i>
@@ -1019,7 +1019,7 @@
                                             </div>
                                             
                                             <div class="col-12 mt-4">
-                                                <button class="default_btn rounded">充值</button>
+                                                <button class="default_btn rounded" id="recharge">充值</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1043,3 +1043,25 @@
 </body>
 
 </html>
+<script>
+    function reload(){
+        $.get("/users/getInfo",function(data){
+        $("#username").text(data.data.username)
+        $("#user_balance").text(data.data.balance)
+    })
+    }
+
+    reload()
+
+    $("#recharge").click(function(){
+        $.get("/users/recharge",{"money":$("#county_region").val()},function(data){
+            if(data.state == 200){
+                alert("充值成功")
+                $("#county_region").val("")
+                reload()
+            }
+        })
+    })
+
+
+</script>

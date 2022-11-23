@@ -727,8 +727,8 @@
                     <div class="account_sidebar">
                         <div class="account_profile position-relative shadow_sm">
                             <div class="acprof_cont">
-                                <p style="display:inline-block">Hello,</p><h4 style="display:inline-block">Russ</h4>
-                                <p>账户余额：</p>
+                                <p style="display:inline-block">Hello,</p><h4 style="display:inline-block" id="username"></h4>
+                                <p>账户余额：</p><h4 style="display:inline-block" id="user_balance"></h4>
                             </div>
                             <div class="profile_hambarg d-lg-none d-block">
                                 <i class="las la-bars"></i>
@@ -767,6 +767,7 @@
                     </div>
                 </div>
                 <!-- account content -->
+<<<<<<< HEAD
                 <div class="col-lg-9">
                     <div class="acorder_wrapper">
                         <div class="single_prof_recorder mt-0 mb-4 shadow_sm">
@@ -794,6 +795,13 @@
                             </div>
                         </div>
                     </div>
+=======
+                <div class="col-lg-9" id="showOrder">
+                    
+
+                    
+                    
+>>>>>>> 9098ff8f137d935928efae5e52580952d6f9d9e4
                 </div>
             </div>
         </div>
@@ -808,3 +816,70 @@
     <script src="/assets/js/app.js"></script>
 </body>
 </html>
+<script>
+    $.get("/users/order/query",function(data){
+        
+        for (const i in data.data) {
+            var d = new Date(data.data[i].createTime) //data 表示的是timestamp的时间戳
+            console.log(d.toString())
+            var time = timeStamp2String(d)
+
+            $("#showOrder").append(`
+
+            <div class="acorder_wrapper">
+                        <div class="single_prof_recorder mt-0 mb-4 shadow_sm">
+                            <div class="prorder_txt prorder_odnumber">
+                                <h5>订单号</h5>
+                                <p>${data.data[i].orderId}</p>
+                            </div>
+                            <div class="prorder_txt prorder_purchased">
+                                <h5>购买时间</h5>
+                                <p>${time}</p>
+                            </div>
+                            <div class="prorder_txt prorder_qnty d-none d-sm-block">
+                                <h5>数量</h5>
+                                <p>${data.data[i].amount}</p>
+                            </div>
+                            <div class="prorder_txt prorder_total">
+                                <h5>价格</h5>
+                                <p>${data.data[i].totalPrice}</p>
+                            </div>
+                            <div class="prorder_txt prorder_status">
+                                <h5 class="d-none d-md-block">状态</h5>
+                                <h5 class="d-block d-md-none"><span class="text_md me-2">Qty: x3</span> $120</h5>
+                                <p class="text-color">${data.data[i].status}</p>
+                            </div>
+                        </div>
+                </div>
+            
+            `)
+        }
+        
+    })
+
+    function timeStamp2String(datetime){
+
+        var year = datetime.getFullYear();
+
+        var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+
+        var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+
+        var hour = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();
+
+        var minute = datetime.getMinutes()< 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+
+        var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+
+        return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
+}
+
+    function reload(){
+            $.get("/users/getInfo",function(data){
+            $("#username").text(data.data.username)
+            $("#user_balance").text(data.data.balance)
+        })
+    }
+
+    reload()
+</script>

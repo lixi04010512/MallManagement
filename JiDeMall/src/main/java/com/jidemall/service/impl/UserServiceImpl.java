@@ -100,12 +100,12 @@ public class UserServiceImpl implements UserService {
         if (result == null || result.getIsDelete() == 1) {
             throw new UserNotFoundException("用户不存在！");
         }
-        User user = new User();
-        user.setUsername(result.getUsername());
-        user.setPhone(result.getPhone());
-        user.setEmail(result.getEmail());
-        user.setGender(result.getGender());
-        return user;
+//        User user = new User();
+//        user.setUsername(result.getUsername());
+//        user.setPhone(result.getPhone());
+//        user.setEmail(result.getEmail());
+//        user.setGender(result.getGender());
+        return result;
     }
 
     @Override
