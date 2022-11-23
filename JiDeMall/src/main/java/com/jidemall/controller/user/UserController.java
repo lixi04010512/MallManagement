@@ -147,7 +147,7 @@ public class UserController extends BaseController{
     @RequestMapping("getInfo")
     public JsonResult<User> getInfo(HttpSession session){
         User user = userService.getByUid(getUidFromSession(session));
-        return new JsonResult<>(OK, user);
+        return new JsonResult<User>(OK, user);
     }
     @ResponseBody
     @RequestMapping("changeInfo")
@@ -156,6 +156,7 @@ public class UserController extends BaseController{
         return new JsonResult<>(OK);
     }
 
+    @ResponseBody
     @RequestMapping("recharge")
     public JsonResult<Void> recharge(BigDecimal money, HttpSession session){
         userService.recharge(getUidFromSession(session),money);
