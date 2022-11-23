@@ -103,7 +103,8 @@ public class AdminProductController {
         }
 
         Integer count = productService.insertProduct(product);
-        return "success";
+        return "redirect:http://localhost:8080/admin/products/table_html";
+
     }
 
     @PutMapping("/updateProduct")

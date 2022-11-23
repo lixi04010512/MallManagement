@@ -97,11 +97,6 @@ public class UserController extends BaseController{
         return "shop-list";
     }
 
-    @RequestMapping("table_html")
-    public String table_html(){
-        return "table";
-    }
-
     @RequestMapping("terms-condition_html")
     public String termscondition_html(){
         return "terms-condition";
