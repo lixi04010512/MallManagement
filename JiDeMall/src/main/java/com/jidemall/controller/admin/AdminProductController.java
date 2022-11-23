@@ -75,8 +75,9 @@ public class AdminProductController {
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
-
+    
     private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/img/";
+
 
     @RequestMapping(value = "/insertProduct", method = RequestMethod.POST)
     @ResponseBody
@@ -101,10 +102,10 @@ public class AdminProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println(product);
         Integer count = productService.insertProduct(product);
 
-        return "redirect:http://localhost:8080/admin/products/table_html";
+        return "redirect:http://localhost:8080/admin/products/findProductList";
 
     }
 
@@ -113,10 +114,4 @@ public class AdminProductController {
         Integer count = productService.updateProduct(product);
         return "success";
     }
-
-    @GetMapping("/table_html")
-    public String table_html() {
-        return "table";
-    }
-
 }
