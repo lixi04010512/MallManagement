@@ -1,6 +1,7 @@
 package com.jidemall.controller.admin;
 
 import com.jidemall.entity.Product;
+import com.jidemall.service.CategoryService;
 import com.jidemall.service.ProductService;
 import com.jidemall.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class AdminProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/findProductList")
     public ModelAndView findProductList(ModelAndView mv){

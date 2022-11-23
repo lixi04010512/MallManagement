@@ -1005,7 +1005,7 @@
             $("#four_product").empty();
             for (var i of data){
                 $("#four_product").append(`
-                 <div class="col-lg-3 col-sm-6">
+                 <div class="col-lg-3 col-sm-6" onclick="details(${i.productId})">
                     <div class="single_new_arrive">
                         <div class="sna_img">
                             <img loading="lazy" class="prd_img" src="${i.productImg}" alt="product">
@@ -1030,6 +1030,10 @@
             }
         }
     })
+
+    function details(id){
+       window.location.href="/user/products/productDetails/"+id;
+    }
 </script>
 </body>
 

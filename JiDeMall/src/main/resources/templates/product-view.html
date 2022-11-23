@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -941,22 +941,22 @@
     </div>
 
     <!-- breadcrumbs -->
-    <div class="container">
+    <div class="container" th:each="product:${product}">
         <div class="breadcrumbs">
             <a href="#"><i class="las la-home"></i></a>
             <a href="#">商品</a>
-            <a href="#" class="active">男士 阿迪达斯 球鞋</a>
+            <a href="#" class="active" th:text="${product.productName}"></a>
         </div>
     </div>
 
     <!-- product view -->
     <div class="product_view_wrap section_padding_b">
         <div class="container">
-            <div class="row">
+            <div class="row" th:each="product:${product}">
                 <div class="col-lg-6">
                     <div class="product_view_slider">
                         <div class="single_viewslider">
-                            <img loading="lazy" src="/assets/images/slider-1.png" alt="product">
+                            <img loading="lazy" th:src="@{/img/6b0bd268-40b1-4abf-a19b-95df7cb4d722.jpg}" alt="product">
                         </div>
                         <div class="single_viewslider">
                             <img loading="lazy" src="/assets/images/slider-2.png" alt="product">
@@ -971,26 +971,6 @@
                             <img loading="lazy" src="/assets/images/slider-5.png" alt="product">
                         </div>
                         <div class="single_viewslider">
-                            <img loading="lazy" src="/assets/images/slider-1.png" alt="product">
-                        </div>
-                    </div>
-                    <div class="product_viewslid_nav">
-                        <div class="single_viewslid_nav">
-                            <img loading="lazy" src="/assets/images/slider-1.png" alt="product">
-                        </div>
-                        <div class="single_viewslid_nav">
-                            <img loading="lazy" src="/assets/images/slider-2.png" alt="product">
-                        </div>
-                        <div class="single_viewslid_nav">
-                            <img loading="lazy" src="/assets/images/slider-3.png" alt="product">
-                        </div>
-                        <div class="single_viewslid_nav">
-                            <img loading="lazy" src="/assets/images/slider-4.png" alt="product">
-                        </div>
-                        <div class="single_viewslid_nav">
-                            <img loading="lazy" src="/assets/images/slider-5.png" alt="product">
-                        </div>
-                        <div class="single_viewslid_nav">
                             <img loading="lazy" src="/assets/images/slider-1.png" alt="product">
                         </div>
                     </div>
@@ -998,15 +978,15 @@
                 <div class="col-lg-6">
                     <div class="product_info_wrapper">
                         <div class="product_base_info">
-                            <h1>男士 阿迪达斯 球鞋</h1>
+                            <h1 th:text="${product.productName}"></h1>
                             <div class="product_other_info">
                                 <p><span>供应：</span><span class="text-green">现货</span></p>
-                                <p><span>品牌：</span>阿迪达斯</p>
-                                <p><span>类别：</span>服装</p>
-                                <!-- <p><span>SKU:</span>BE45VGRT</p> -->
+                                <p><span th:each="categoryName:${categoryName}" th:text="'类别：'+${categoryName}"></span></p>
+                                <p><span th:text="'销量：'+${product.salesCount}"></span></p>
+                                <p><span th:text="'库存：'+${product.inventory}"></span></p>
                             </div>
                             <div class="price mt-3 mb-3 d-flex align-items-center">
-                                <span class="org_price ms-2">$4500.00</span>
+                                <span class="org_price ms-2" th:text="'￥'+${product.price}"></span>
                             </div>
                             
                             <div class="cart_qnty ms-md-auto">
@@ -1015,7 +995,7 @@
                                     <div class="cart_qnty_btn">
                                         <i class="las la-minus"></i>
                                     </div>
-                                    <div class="cart_count">4</div>
+                                    <div class="cart_count">1</div>
                                     <div class="cart_qnty_btn">
                                         <i class="las la-plus"></i>
                                     </div>
