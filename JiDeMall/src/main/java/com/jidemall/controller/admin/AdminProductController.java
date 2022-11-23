@@ -75,16 +75,14 @@ public class AdminProductController {
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
-    
+
     private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/img/";
 
 
     @RequestMapping(value = "/insertProduct", method = RequestMethod.POST)
     @ResponseBody
-    public String insertProduct(@RequestParam("file") MultipartFile file,Product product) {
-        if (file.isEmpty()) {
-            return "上传失败";
-        }
+    public ModelAndView insertProduct(@RequestParam("file") MultipartFile file,Product product) {
+        String path1=null;
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //生成文件名称通用方法
@@ -98,14 +96,17 @@ public class AdminProductController {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(FILE_UPLOAD_PATH + newFileName);
             System.out.println(path);
+            path1= String.valueOf(path);
             Files.write(path, bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(product);
+        product.setProductImg(path1.substring(83));
+        System.out.println(path1.substring(83));
         Integer count = productService.insertProduct(product);
-
-        return "redirect:http://localhost:8080/admin/products/findProductList";
+        String url ="redirect:http://localhost:8080/admin/products/findProductList";
+        return new ModelAndView(url);
 
     }
 

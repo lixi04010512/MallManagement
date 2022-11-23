@@ -131,7 +131,7 @@
                                         <tbody>
                                         <tr th:each="product:${products}" th:attr="datakey = ${product.productId}">
                                             <td class="img">
-                                                <img th:src="@{/img/6b0bd268-40b1-4abf-a19b-95df7cb4d722.jpg}"/>
+                                                <img th:src="@{/img/product.productImg}"/>
                                             </td>
                                             <td th:text="${product.productId}"></td>
                                             <td th:text="${product.productName}"></td>
@@ -142,7 +142,7 @@
                                             <td th:text="${product.inventory}"></td>
                                             <td th:text="${product.createTime}"></td>
                                             <td>
-                                                <a href="/users/alter_html" style="background-color: #6e6e6e;
+                                                <bttton style="background-color: #6e6e6e;
                                                     border: none;
                                                     color: white;
                                                     padding: 2px 6px;
@@ -150,8 +150,8 @@
                                                     text-decoration: none;
                                                     display: inline-block;
                                                     font-size: 16px;
-                                                    margin-left: 7px;" class="cha">编辑</a>
-                                                <a style="background-color: #6e6e6e;
+                                                    margin-left: 7px;" class="cha">编辑</bttton>
+                                                <button style="background-color: #6e6e6e;
                                                     border: none;
                                                     color: white;
                                                     padding: 2px 6px;
@@ -159,7 +159,7 @@
                                                     text-decoration: none;
                                                     display: inline-block;
                                                     font-size: 16px;
-                                                    margin-left: 7px;    margin-top: 8px;" class="del">删除</a>
+                                                    margin-left: 7px;    margin-top: 8px;" class="del" data-th-id="${product.productId}">删除</button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -198,6 +198,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bootstrap-data-table-export').DataTable();
+    })
+    $(".del").click(function (){
+            $.ajax({
+                type:"POST",
+                url:"/admin/products//deleteProduct/{id}",
+                success:function (){
+                    window.reload();
+                }
+            })
     })
 </script>
 </body>
