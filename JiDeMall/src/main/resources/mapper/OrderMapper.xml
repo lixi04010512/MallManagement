@@ -14,9 +14,9 @@
 
     <insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderId">
         insert into tb_order
-            (user_id,address,product_id,amount,create_time,phone,receiver)
+            (user_id,address,product_id,amount,create_time,phone,receiver,total_price)
         values
-            (#{userId},#{address},#{productId},#{amount},#{createTime},#{phone},#{receiver});
+            (#{userId},#{address},#{productId},#{amount},#{createTime},#{phone},#{receiver},#{totalPrice});
     </insert>
 
     <select id="queryOrder" resultMap="OrderEntityMap">
