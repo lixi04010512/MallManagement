@@ -42,7 +42,7 @@
     </insert>
 
     <update id="updateProduct">
-        update tb_product set category_id = #{categoryId},product_name = #{productName},product_img = #{productImg},intro = #{intro},details = #{details},price = #{price},inventory = #{inventory},sales_count = #{salesCount} where product_id = #{productId};
+        update tb_product set category_id = #{categoryId},product_name = #{productName},intro = #{intro},details = #{details},price = #{price},inventory = #{inventory},sales_count = #{salesCount} where product_id = #{productId};
     </update>
 
     <select id="salesCountAsc" resultMap="ProductEntityMap">

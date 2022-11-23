@@ -27,103 +27,126 @@
 
 <body>
 
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
 
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="menu-item-has-children active dropdown" style="width: 280px;">
-                        <a href="/users/table_html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>商品管理</a>
-                        
-                    </li>
-                    
-                </ul>
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="menu-item-has-children active dropdown" style="width: 280px;">
+                    <a href="/users/table_html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-table"></i>商品管理</a>
+
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</aside>
+
+<div id="right-panel" class="right-panel">
+
+    <header id="header" class="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <a class="navbar-brand">JIDE</a>
+                <a class="navbar-brand hidden"><img src="/images/logo2.png" alt="Logo"></a>
+                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
-        </nav>
-    </aside>
+        </div>
+    </header>
 
-    <div id="right-panel" class="right-panel">
-
-        <header id="header" class="header">
-            <div class="top-left">
-                <div class="navbar-header">
-                    <a class="navbar-brand">JIDE</a>
-                    <a class="navbar-brand hidden"><img src="/images/logo2.png" alt="Logo"></a>
-                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-                </div>
-            </div>
-        </header>
-
-        <div class="content">
-            <form>
-                <h4 style="    margin-bottom: 22px;
+    <div class="content">
+        <h4 style="    margin-bottom: 22px;
                 margin-top: -17px;">修改商品</h4>
-                <div class="form-group">
-                    <label for="exampleInputFile">图片</label>
-                    <input type="file" id="exampleInputFile">
-                    <!-- <p class="help-block">Example block-level help text here.</p> -->
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">名称</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入名称" style="width:70% ;">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">类别</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入类别"style="width:70% ;">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">详情</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入详情"style="width:70% ;">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">价格</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入价格"style="width:70% ;">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">库存</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入库存"style="width:70% ;">
-                  </div>
-                
-                
-                <a href="#" class="btn btn-default btn-lg active" role="button" style="background-color: #6e6e6e;
+        <div class="form-group" th:each="product:${product}">
+            <label>id</label>
+            <input type="text" class="form-control" id="productId" th:value="${product.productId}"
+                   placeholder="请输入id" style="width:70% ;">
+        </div>
+        <div>
+            <label>名称</label>
+            <input type="text" class="form-control" id="productName" th:value="${product.productName}"
+                   placeholder="请输入名称" style="width:70% ;">
+        </div>
+        <div class="form-group">
+            <label>类别</label>
+            <input type="text" class="form-control" id="categoryId" th:value="${product.categoryId}"
+                   placeholder="请输入类别" style="width:70% ;">
+        </div>
+        <div class="form-group">
+            <label>详情</label>
+            <input type="text" class="form-control" id="details" th:value="${product.details}" placeholder="请输入详情"
+                   style="width:70% ;">
+        </div>
+        <div class="form-group">
+            <label>价格</label>
+            <input type="text" class="form-control" id="price" th:value="${product.price}" placeholder="请输入价格"
+                   style="width:70% ;">
+        </div>
+
+        <div class="form-group">
+            <label>库存</label>
+            <input type="text" class="form-control" id="inventory" th:value="${product.inventory}"
+                   placeholder="请输入库存" style="width:70% ;">
+        </div>
+
+
+        <button id="alter" class="btn btn-default btn-lg active" style="background-color: #6e6e6e;
                 border: none;
                 color: white;
                 padding: 10px 30px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;">提交</a>
-              </form>
- 
-        </div>
-        <div class="clearfix"></div>
+                font-size: 16px;">提交
+        </button>
+
+
     </div>
-    <script src="/javascripts/jq.js"></script>
-    <script src="/javascripts/popper.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/javascripts/jquery.matchHeight.min.js"></script>
-    <script src="/javascripts/main1.js"></script>
-    <script src="/javascripts/datatables.min.js"></script>
-    <script src="/javascripts/dataTables.bootstrap.min.js"></script>
-    <script src="/javascripts/dataTables.buttons.min.js"></script>
-    <script src="/javascripts/buttons.bootstrap.min.js"></script>
-    <script src="/javascripts/jszip.min.js"></script>
-    <script src="/javascripts/vfs_fonts.js"></script>
-    <script src="/javascripts/buttons.html5.min.js"></script>
-    <script src="/javascripts/buttons.print.min.js"></script>
-    <script src="/javascripts/buttons.colVis.min.js"></script>
-    <script src="/javascripts/datatables-init.js"></script>
-    <script src="/javascripts/product.js"></script>
+    <div class="clearfix"></div>
+</div>
+<script src="/javascripts/jq.js"></script>
+<script src="/javascripts/popper.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.matchHeight.min.js"></script>
+<script src="/javascripts/main1.js"></script>
+<script src="/javascripts/datatables.min.js"></script>
+<script src="/javascripts/dataTables.bootstrap.min.js"></script>
+<script src="/javascripts/dataTables.buttons.min.js"></script>
+<script src="/javascripts/buttons.bootstrap.min.js"></script>
+<script src="/javascripts/jszip.min.js"></script>
+<script src="/javascripts/vfs_fonts.js"></script>
+<script src="/javascripts/buttons.html5.min.js"></script>
+<script src="/javascripts/buttons.print.min.js"></script>
+<script src="/javascripts/buttons.colVis.min.js"></script>
+<script src="/javascripts/datatables-init.js"></script>
+<script src="/javascripts/product.js"></script>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bootstrap-data-table-export').DataTable();
+    });
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#bootstrap-data-table-export').DataTable();
-        });
-    </script>
+    $("#alter").click(function () {
+        $.ajax({
+            type: "PUT",
+            url: "/admin/products/updateProduct",
+            data: {
+                "productId": $("#productId").val(),
+                "productName": $("#productName").val(),
+                "categoryId": $("#categoryId").val(),
+                "details": $("#details").val(),
+                "price": $("#price").val(),
+                "inventory": $("#inventory").val(),
+            },
+            success: function () {
+                alert("修改成功！");
+                window.location = "/admin/products/findProductList";
+            }
+        })
+    })
+</script>
 
 
 </body>
