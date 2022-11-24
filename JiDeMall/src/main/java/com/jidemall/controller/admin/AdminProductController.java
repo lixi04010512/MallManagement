@@ -76,7 +76,7 @@ public class AdminProductController {
         productService.deleteProduct(id);
     }
 
-    private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/img/";
+    private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/assets/images/";
 
 
     @RequestMapping(value = "/insertProduct", method = RequestMethod.POST)
