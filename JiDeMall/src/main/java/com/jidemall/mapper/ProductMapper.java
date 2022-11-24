@@ -1,5 +1,6 @@
 package com.jidemall.mapper;
 
+import com.jidemall.entity.Page;
 import com.jidemall.entity.Product;
 import org.springframework.stereotype.Repository;
 
@@ -39,4 +40,10 @@ public interface ProductMapper {
     List<Product> salesCountDesc();
 
     List<Product> queryToday();
+
+    //查询商品总数
+    Integer getCount();
+
+    //分页查询
+    List<Product> productsPaging(Integer startRow,Integer pageSize);
 }

@@ -1,5 +1,6 @@
 package com.jidemall.service.impl;
 
+import com.jidemall.entity.Page;
 import com.jidemall.entity.Product;
 import com.jidemall.mapper.ProductMapper;
 import com.jidemall.service.ProductService;
@@ -72,5 +73,17 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> salesCountDesc() {
         List<Product> products = productMapper.salesCountDesc();
         return null;
+    }
+
+    @Override
+    public Integer getCount() {
+        Integer count = productMapper.getCount();
+        return count;
+    }
+
+    @Override
+    public List<Product> productsPaging(Integer startRow,Integer pageSize) {
+        List<Product> products = productMapper.productsPaging(startRow,pageSize);
+        return products;
     }
 }

@@ -1,5 +1,6 @@
 package com.jidemall.controller.user;
 
+import com.jidemall.entity.Page;
 import com.jidemall.entity.Product;
 import com.jidemall.service.CategoryService;
 import com.jidemall.service.ProductService;
@@ -42,6 +43,30 @@ public class UserProductController {
         mv.setViewName("product-view");
         return mv;
     }
+
+    @GetMapping("/paging/{pageNo}")
+    public ModelAndView productPaging(ModelAndView mv,Page page,@PathVariable Integer pageNo){
+        page.setPath("/user/products/paging/{pageNo}");
+        page.setPageNo(pageNo);
+        Integer count = productService.getCount();
+        page.setPageTotalCount(count);
+        if (count % 5 == 0){
+            page.setPageTotal(count / 5);
+        }else {
+            page.setPageTotal((count / 5) + 1 );
+        }
+        page.setStartRow((pageNo - 1) * 5);
+        Integer startRow = page.getStartRow();
+        Integer pageSize = page.getPageSize();
+        List<Product> products = productService.productsPaging(startRow,pageSize);
+        System.out.println(page);
+        System.out.println(products);
+        mv.addObject("page",page);
+        mv.addObject("products",products);
+        mv.setViewName("shop-list");
+        return mv;
+    }
+
 
     @GetMapping("/findProductByPriceAsc")
     public String findProductByPriceAsc(){

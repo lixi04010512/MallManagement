@@ -1,5 +1,6 @@
 package com.jidemall.service;
 
+import com.jidemall.entity.Page;
 import com.jidemall.entity.Product;
 
 
@@ -37,4 +38,10 @@ public interface ProductService{
 
     //按商品销量降序排列
     List<Product> salesCountDesc();
+
+    //查询商品总数
+    Integer getCount();
+
+    //分页查询
+    List<Product> productsPaging(Integer startRow,Integer pageSize);
 }
