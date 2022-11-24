@@ -28,6 +28,12 @@ public class UserProductController {
         return products;
     }
 
+    @GetMapping("/findProductById")
+    public Product findProductById(String product_id){
+        Product product = productService.findProductById(Long.valueOf(product_id));
+        return product;
+    }
+
     @GetMapping("/findProductByName/{name}")
     public String findProductByName(@PathVariable String name){
         List<Product> products = productService.findProductByName(name);

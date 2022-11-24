@@ -49,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
         // 添加订单
         Date date = new Date();
         order.setCreateTime(date);
+        order.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(order.getAmount())));
         orderMapper.insertOrder(order);
 
         // 扣除用户余额

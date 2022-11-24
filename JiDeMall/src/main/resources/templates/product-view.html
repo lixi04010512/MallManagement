@@ -956,7 +956,7 @@
                 <div class="col-lg-6">
                     <div class="product_view_slider">
                         <div class="single_viewslider">
-                            <img loading="lazy" th:src="@{/img/6b0bd268-40b1-4abf-a19b-95df7cb4d722.jpg}" alt="product">
+                            <img loading="lazy" th:src="${product.productImg}" alt="product">
                         </div>
                         <div class="single_viewslider">
                             <img loading="lazy" src="/assets/images/slider-2.png" alt="product">
@@ -989,13 +989,13 @@
                                 <span class="org_price ms-2" th:text="'￥'+${product.price}"></span>
                             </div>
                             
-                            <div class="cart_qnty ms-md-auto">
+                            <div class="cart_qnty ms-md-auto" id="calculate">
                                 <p>数量</p>
                                 <div class="d-flex align-items-center">
                                     <div class="cart_qnty_btn">
                                         <i class="las la-minus"></i>
                                     </div>
-                                    <div class="cart_count">1</div>
+                                    <div class="cart_count" >1</div>
                                     <div class="cart_qnty_btn">
                                         <i class="las la-plus"></i>
                                     </div>
@@ -1003,7 +1003,7 @@
                             </div>
                         </div>
                         <div class="product_buttons">
-                            <a href="/users/checkout_html" class="default_btn small rounded me-sm-3 me-2 px-4"><i class="icon-cart me-2"></i>立即购买</a>
+                            <a  class="default_btn small rounded me-sm-3 me-2 px-4" id="buy"><i class="icon-cart me-2"></i>立即购买</a>
                             
                         </div>
                         
@@ -1027,3 +1027,25 @@
 
 
 </html>
+<script>
+    $("#calculate").delegate('.la-plus','click',function(){
+        $(".cart_count").text(parseInt($(".cart_count").text())+1)
+    })
+
+    $("#calculate").delegate('.la-minus','click',function(){
+        $(".cart_count").text(parseInt($(".cart_count").text())-1)
+    })
+
+    console.log($(location).attr("href"));
+    url = $(location).attr("href")
+    val = url.substring(url.lastIndexOf('/') + 1);
+    console.log(val);
+
+    $("#buy").click(function(){
+        console.log($(location).attr("href"));
+        window.location.href = "/users/checkout_html?product_id="+val+"&amount="+$(".cart_count").text()
+    })
+
+    
+
+</script>

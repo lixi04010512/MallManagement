@@ -958,21 +958,21 @@
                             <div class="col-lg-6">
                                 <div class="single_billing_inp">
                                     <label for="first_name">收货人<span>*</span></label>
-                                    <input type="text" id="first_name">
+                                    <input type="text" id="receiver">
                                 </div>
                             </div>
                             
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label for="company_name">电话号码</label>
-                                    <input type="text" id="company_name">
+                                    <input type="text" id="phone">
                                 </div>
                             </div>
                             
                             <div class="col-12">
                                 <div class="single_billing_inp">
                                     <label for="street_addr">收货地址<span>*</span></label>
-                                    <input type="text" id="street_addr">
+                                    <input type="text" id="address">
                                 </div>
                             </div>
                             
@@ -985,18 +985,12 @@
                         <h4>商品</h4>
                         <div class="single_check_order">
                             <div class="checkorder_cont">
-                                <h5>商品</h5>
+                                <h5 id="productName"></h5>
                             </div>
-                            <p class="checkorder_qnty">x1</p>
-                            <p class="checkorder_price">$84.00</p>
+                            <p class="checkorder_qnty" id="amount"></p>
+                            <p class="checkorder_price" id="price"></p>
                         </div>
                         
-                        <div class="single_check_order subs">
-                            <div class="checkorder_cont subtotal-h">
-                                <h5>小计</h5>
-                            </div>
-                            <p class="checkorder_price">$84.00</p>
-                        </div>
                         <div class="single_check_order subs">
                             <div class="checkorder_cont subtotal-h">
                                 <h5>运费</h5>
@@ -1007,7 +1001,7 @@
                             <div class="checkorder_cont">
                                 <h5>总计</h5>
                             </div>
-                            <p class="checkorder_price">$140.00</p>
+                            <p class="checkorder_price" id="sumPrice"></p>
                         </div>
                         <div class="checkorder_agree custom_check check_2">
                             <input type="checkbox" class="check_inp" hidden id="save-default">
@@ -1016,7 +1010,7 @@
                      
 
                         <div class="checkorder_btn">
-                            <button class="default_btn rounded w-100">提交订单</button>
+                            <button class="default_btn rounded w-100" id="confirm">提交订单</button>
                         </div>
                     </div>
                 </div>
@@ -1035,3 +1029,40 @@
     <script src="/assets/js/app.js"></script>
 </body>
 </html>
+<script>
+
+    var url = window.location.href;
+    var obj = {};
+    if(url.indexOf('?') != -1){
+        
+        let arr = url.slice(url.indexOf('?')+1).split('&');
+        arr.forEach(item => {
+            let param = item.split('=');
+            obj[param[0]] = param[1];
+        })
+        console.log(obj);
+    
+    }else{
+        console.log('没有参数');
+    }
+
+    $.get('/user/products/findProductById',{"product_id":obj.product_id},function(data){
+    
+        $("#productName").text(data.productName)
+        $("#amount").text(obj.amount)
+        $("#price").text(data.price)
+        $("#sumPrice").text(parseInt(obj.amount)*parseInt(data.price))
+
+    })
+
+    $("#confirm").click(function(){
+        $.get("/users/order/determine",{"productId" : obj.product_id , "amount" : obj.amount , "address" : $("#address").val(), "receiver" : $("#receiver").val(),"phone" : $("#phone").val()},function(data){
+            if(data.state == 200){
+                alert("购买成功")
+                window.location.href = "/users/account-order-history_html"
+            }
+        })
+    })
+
+
+</script>

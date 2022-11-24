@@ -13,8 +13,8 @@
         <result column="modified_time" property="modifiedTime"></result>
     </resultMap>
     <insert id="insert" useGeneratedKeys="true" keyProperty="uid">
-        insert into tb_user(username,password,salt,phone,email,gender,avatar,is_delete,created_user,created_time,modified_user,modified_time
-        ) values (#{username},#{password},#{salt},#{phone},#{email},#{gender},#{avatar},#{isDelete},#{createdUser},#{createdTime},#{modifiedUser},#{modifiedTime})
+        insert into tb_user(username,password,salt,phone,email,gender,avatar,is_delete,created_user,created_time,modified_user,modified_time,balance
+        ) values (#{username},#{password},#{salt},#{phone},#{email},#{gender},#{avatar},#{isDelete},#{createdUser},#{createdTime},#{modifiedUser},#{modifiedTime},0)
     </insert>
     <select id="findByUsername" resultMap="UserEntityMap" resultType="com.jidemall.entity.User">
         select uid,username,password,salt,phone,email,gender,avatar,is_delete,created_user,created_time,modified_user,modified_time from tb_user where username=#{username}

@@ -76,13 +76,13 @@ public class AdminProductController {
         productService.deleteProduct(id);
     }
 
-    private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/img/";
+    private final static String FILE_UPLOAD_PATH = "/Users/xi/Desktop/github_project/MallManagement/JiDeMall/src/main/resources/static/assets/images/";
 
 
     @RequestMapping(value = "/insertProduct", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView insertProduct(@RequestParam("file") MultipartFile file,Product product) {
-        String path1=null;
+    public ModelAndView insertProduct(@RequestParam("file") MultipartFile file, Product product) {
+        String path1 = null;
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //生成文件名称通用方法
@@ -96,20 +96,29 @@ public class AdminProductController {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(FILE_UPLOAD_PATH + newFileName);
             System.out.println(path);
-            path1= String.valueOf(path);
+            path1 = String.valueOf(path);
             Files.write(path, bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(product);
-        product.setProductImg(path1.substring(83));
-        System.out.println(path1.substring(83));
+        product.setProductImg(path1.substring(82));
+        System.out.println(path1.substring(82));
         Integer count = productService.insertProduct(product);
-        String url ="redirect:http://localhost:8080/admin/products/findProductList";
+        String url = "redirect:http://localhost:8080/admin/products/findProductList";
         return new ModelAndView(url);
 
     }
 
+    @GetMapping("/findProductById1/{id}")
+    public ModelAndView findProductById1(@PathVariable Long id, ModelAndView mv) {
+        Product product = productService.findProductById(id);
+        mv.addObject("product", product);
+        mv.setViewName("alter");
+        return mv;
+    }
+
+    @ResponseBody
     @PutMapping("/updateProduct")
     public String updateProduct(Product product) {
         Integer count = productService.updateProduct(product);
