@@ -956,7 +956,7 @@
                 <div class="col-lg-6">
                     <div class="product_view_slider">
                         <div class="single_viewslider">
-                            <img loading="lazy" th:src="@{/img/6b0bd268-40b1-4abf-a19b-95df7cb4d722.jpg}" alt="product">
+                            <img loading="lazy" th:src="${product.productImg}" alt="product">
                         </div>
                         <div class="single_viewslider">
                             <img loading="lazy" src="/assets/images/slider-2.png" alt="product">
@@ -983,7 +983,7 @@
                                 <p><span>供应：</span><span class="text-green">现货</span></p>
                                 <p><span th:each="categoryName:${categoryName}" th:text="'类别：'+${categoryName}"></span></p>
                                 <p><span th:text="'销量：'+${product.salesCount}"></span></p>
-                                <p><span th:text="'库存：'+${product.inventory}"></span></p>
+                                <p><span th:text="'商品编号：'+${product.productId}"></span></p>
                             </div>
                             <div class="price mt-3 mb-3 d-flex align-items-center">
                                 <span class="org_price ms-2" th:text="'￥'+${product.price}"></span>
