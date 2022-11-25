@@ -769,10 +769,10 @@
                             </a>
                         </div>
                         <a >
-                            <div th:class="${page.pageNo == 1 ? 'single_paginat active pageNum' : 'single_paginat pageNum'}"  id="one"></div>
+                            <div class="single_paginat pageNum"  id="one"></div>
                         </a>
                         <a >
-                            <div th:class="${page.pageNo == 2 ? 'single_paginat active pageNum' : 'single_paginat pageNum'}" id="two"></div>
+                            <div class="single_paginat pageNum" id="two"></div>
                         </a>
                         <a >
                             <div class="single_paginat pageNum" id="three"></div>
@@ -826,6 +826,11 @@
                     $("#three").attr("pageNum",3);
                     $("#four").attr("pageNum",4);
                     $("#five").attr("pageNum",5);
+                    if (pageNo == 1){
+                        $("#one").addClass("active");
+                    }else {
+                        $("#two").addClass("active");
+                    }
                 }else if (pageNo >= 3 && pageNo <= pageTotal -2){
                     $("#one").text(pageNo-2);
                     $("#two").text(pageNo-1);
@@ -837,6 +842,7 @@
                     $("#three").attr("pageNum",pageNo);
                     $("#four").attr("pageNum",pageNo+1);
                     $("#five").attr("pageNum",pageNo+2);
+                    $("#three").addClass("active");
                 }else {
                     $("#one").text(pageTotal-4);
                     $("#two").text(pageTotal-3);
@@ -848,7 +854,13 @@
                     $("#three").attr("pageNum",pageTotal-2);
                     $("#four").attr("pageNum",pageTotal-1);
                     $("#five").attr("pageNum",pageTotal);
+                    if (pageNo == pageTotal - 1){
+                        $("#four").addClass("active");
+                    }else {
+                        $("#five").addClass("active");
+                    }
                 }
+
             }
         )
 
